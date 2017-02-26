@@ -11,9 +11,9 @@
       ./neovim.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
-      ./profiles/laptop.nix
-      #./profiles/desktop.nix
-      #./virtualization.nix
+      #./profiles/laptop.nix
+      ./profiles/desktop.nix
+      ./virtualization.nix
     ];
 
 

@@ -15,9 +15,8 @@
 
 services.xserver = {
     displayManager.sessionCommands = ''
-      xrandr --output DVI-D-0 --right-of DP-4
-      xrandr --output HDMI1 --right-of DP1
-      xrandr --output DP1 --rate 144 --mode 1920x1080
+      xrandr --output HDMI-1 --right-of DP-1
+      xrandr --output DP-1 --rate 144 --mode 1920x1080
       xset s 3600 3600
       xset -dpms
 

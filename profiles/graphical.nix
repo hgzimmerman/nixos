@@ -12,8 +12,11 @@
     terminator
     vlc
     pavucontrol
+    gnome3.nautilus
     tdesktop
 
+    #Printer Drivers
+    hplip
 
     # Window manager
     rofi
@@ -46,6 +49,7 @@
     numix-gtk-theme
     numix-icon-theme-circle
     arc-gtk-theme
+    adapta-gtk-theme
 
   ];
 
