@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     moc
     mumble
+    steam
   ];
 
   fileSystems."/mnt/media" = {
