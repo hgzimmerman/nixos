@@ -12,6 +12,7 @@
     terminator
     vlc
     pavucontrol
+    telegram-desktop
 
 
     # Window manager
