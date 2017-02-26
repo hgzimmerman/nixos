@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./neovim.nix
+      #./virtualization.nix
     ];
 
 
@@ -16,29 +17,12 @@
     allowUnfree = true;
   };
 
-  boot.blacklistedKernelModules = [ "nvidia" ];
-
-  boot.kernelModules = [
-    "vfio"
-    "vfio_pci"
-    "vfio_iommu_type1"
-  ];
-
-
-  boot.kernelParams = [
-    "intel_iommu=on" # AMD CPUs shouldn't need a line like this one
-    "vfio_iommu_type1.allow_unsafe_interrupts=1"
-    "kvm.allow_unsafe_assigned_interrupts=1"
-    "kvm.ignore_msrs=1" # This prevents certain (BSOD) crashes in Windows guests.
-    "i915.enable_hd_vgaarb=1"
-  ];
-  virtualisation.libvirtd.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "HenryNixosDesktop"; # Define your hostname.
+  networking.hostName = "HenryNixosLaptop"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -54,7 +38,7 @@
   programs.zsh.enable = true;
 
 
-  virtualisation.docker.enable = true;
+ # virtualisation.docker.enable = true;
 
 
   environment = {
@@ -131,10 +115,10 @@
 
 
       # Vitalization and Passthrough
-      qemu
-      pciutils #lspci
-      win-virtio
-      libvirt
+      #qemu
+      #pciutils #lspci
+      #win-virtio
+      #libvirt
     ];
 
   shellInit = ''
@@ -180,17 +164,23 @@
     windowManager.i3.enable = true;
     displayManager.lightdm.enable = true;
 
+    synaptics.enable = true;
+    synaptics.twoFingerScroll = true;
+    synaptics.palmDetect = true;
+    synaptics.minSpeed = ".9";
+    synaptics.maxSpeed = "1.4";
+
     displayManager.sessionCommands = ''
       #xrandr --output DVI-D-0 --right-of DP-4
-      xrandr --output HDMI1 --right-of DP1
-      xrandr --output DP1 --rate 144 --mode 1920x1080
-      xset s 3600 3600
-      xset -dpms
-      services.xserver.windowManager.i3.enable = true;
-      ssh-add
-      ${pkgs.networkmanagerapplet}/bin/nm-applet &;
+      #xrandr --output HDMI1 --right-of DP1
+      #xrandr --output DP1 --rate 144 --mode 1920x1080
+      #xset s 3600 3600
+      #xset -dpms
+
+#      ssh-add
+#      ${pkgs.networkmanagerapplet}/bin/nm-applet &;
       # Set GTK_PATH so that GTK+ can find the Xfce theme engine.
-      export GTK_PATH=${pkgs.xfce.gtk_xfce_engine}/lib/gtk-2.0
+     export GTK_PATH=${pkgs.xfce.gtk_xfce_engine}/lib/gtk-2.0
 
       # Set GTK_DATA_PREFIX so that GTK+ can find the Xfce themes.
       export GTK_DATA_PREFIX=${config.system.path}
@@ -202,7 +192,7 @@
     '';
 
 
-#	videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "mesa" ];
   };
 
   fonts = {
