@@ -44,6 +44,8 @@
 
           set number " toggle with <C-n>
 
+          set autochdir " change the dir to the working initial file
+
           set clipboard=unnamedplus " Clipboard integration (requires xsel or xclip to be installed.)
 
           let &colorcolumn="81,121,".join(range(161,999),",") " Creates vertical lines
@@ -67,6 +69,13 @@
           cmap w!! w !sudo tee > /dev/null %
 
           set cursorline cursorcolumn " set a vertical line along where the cursor is
+
+
+          " Neovim has a problem regarding backspace = <C-H>, so when backspace is entered, do <C-H>
+          if has('nvim')
+            nmap <BS> <C-W>h
+          endif
+
           " rebind the switch pane commands
           nnoremap <C-J> <C-W><C-J>
           nnoremap <C-K> <C-W><C-K>
