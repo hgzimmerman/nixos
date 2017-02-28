@@ -19,6 +19,11 @@
     docker
     usbutils
     git
+    htop
+    zip
+    unzip
+    unrar
+    p7zip
 
 
     # Languages
@@ -33,7 +38,6 @@
     cargo
     nodejs
     texlive.combined.scheme-context
-
 
 
   ];
@@ -64,6 +68,7 @@
   };
 
 
+  networking.networkmanager.enable = true;
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";

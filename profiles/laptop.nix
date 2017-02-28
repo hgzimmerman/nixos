@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 {
 
-
+  environment.systemPackages = with pkgs; [
+    xorg.xbacklight
+  ];
 
 services.xserver = {
     synaptics.enable = true;
