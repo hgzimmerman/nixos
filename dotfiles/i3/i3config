@@ -264,7 +264,7 @@ bar {
         #font pango: AF2
         #, Arch-Font3-10 
         #status_command i3status
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
         colors  {
             background #3C3C3F
             statusline #D5D5D5
@@ -285,8 +285,7 @@ bar {
     font pango:FantasqueSansMono, FontAwesome 
 
 
-    status_command i3blocks -c ~/.i3/i3blocks.conf
-
+    status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
     colors  {
         background #3C3C3F
         statusline #D5D5D5
@@ -307,7 +306,7 @@ bar {
         workspace_buttons yes
         #font -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*, Icons 8
         font pango:FantasqueSansMono, FontAwesome 
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
         colors  {
             background #3C3C3F
             statusline #D5D5D5

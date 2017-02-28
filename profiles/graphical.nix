@@ -70,7 +70,7 @@
     enable = true;
     layout = "dvorak";
     windowManager.i3.enable = true;
-    windowManager.i3.configFile = /etc/nixos/dotfiles/i3config;
+    windowManager.i3.configFile = /etc/nixos/dotfiles/i3/i3config;
     displayManager.lightdm.enable = true;
 
   };
