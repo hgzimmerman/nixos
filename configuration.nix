@@ -13,6 +13,7 @@
       ./profiles/graphical.nix
       #./profiles/laptop.nix
       ./profiles/desktop.nix
+      ./profiles/server.nix
       ./virtualization.nix
     ];
 
