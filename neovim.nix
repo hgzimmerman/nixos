@@ -40,6 +40,9 @@
           hi SpellBad cterm=underline,bold
           hi SpellCap cterm=underline
 
+          let g:ycm_autoclose_preview_window_after_insertion = 0
+          let g:ycm_python_binary_path = '/usr/bin/env python3'
+
           " config=======================================================================
 
           set number " toggle with <C-n>
