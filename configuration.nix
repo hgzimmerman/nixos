@@ -8,12 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./custom.nix
       ./neovim.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
-      #./profiles/laptop.nix
-      ./profiles/desktop.nix
-      ./virtualization.nix
+      ./profiles/laptop.nix
+      #./profiles/desktop.nix
+      #./virtualization.nix
     ];
 
 
@@ -26,27 +27,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "HenryNixosLaptop"; # Define your hostname.
-  networking.networkmanager.enable = true;
 
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-
-
-  # List services that you want to enable:
-
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.ports = [2222];
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.splix pkgs.hplip ];
-
-  
  
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.09";

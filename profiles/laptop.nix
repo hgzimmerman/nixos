@@ -2,11 +2,9 @@
 {
 
 
-  fileSystems."/mnt/media" = {
-    device = "192.168.1.125:/plex";
-    fsType = "nfs";
-    options = ["x-systemd.automount,noauto"];
-  };
+  environment.systemPackages = with pkgs; [
+    xorg.xbacklight
+  ];
 
 services.xserver = {
     synaptics.enable = true;
