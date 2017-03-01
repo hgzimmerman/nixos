@@ -154,16 +154,16 @@ bindsym $mod+Shift+9 move container to workspace 9:Music
 bindsym $mod+Shift+0 move container to workspace 10:Config
 
 # default screens for workspaces
-workspace "1:Shell" output DP-4
-workspace "2:Shell" output DVI-D-0
-workspace "3:Web" output DP-4
-workspace "4:Web" output DVI-D-0
-workspace "5:Code" output DVI-D-0
-workspace "6:Misc" output DP-4
-workspace "7:Communication" output DVI-D-0
-workspace "8:Gaming" output  DP-4
-workspace "9:Music" output DP-4
-workspace "10:Config" output DVI-D-0 
+workspace "1:Shell" output DP-1
+workspace "2:Shell" output HDMI-1
+workspace "3:Web" output DP-1
+workspace "4:Web" output HDMI-1
+workspace "5:Code" output HDMI-1
+workspace "6:Misc" output DP-1
+workspace "7:Communication" output HDMI-1
+workspace "8:Gaming" output  DP-1
+workspace "9:Music" output DP-1
+workspace "10:Config" output HDMI-1 
 
 #start firefox on workspace 3, but not restarts
 exec --no-startup-id i3-msg 'workspace 3:Web; exec firefox; workspace 1:Shell'
@@ -247,65 +247,15 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {  
-# i3bar_command /usr/bin/i3bar
-# status_command /home/ziggypop/.local/lib/python3.4/site-packages/powerline/bindings/i3/powerline-i3.py 
-#  font FantasqueSansMono-Regular 20, Icons 8, -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*,
-# }
 bar {
         # status_command sh /home/ziggypop/downloads/tmux-powerline/powerline.sh left
         position bottom
-        output DP-4
         workspace_buttons yes
         #font -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*, Icons 8
         font pango:FantasqueSansMono, FontAwesome 
         #font pango: AF2
         #, Arch-Font3-10 
         #status_command i3status
-        status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
-        colors  {
-            background #3C3C3F
-            statusline #D5D5D5
-            #separator #D64937
-
-            focused_workspace #3C3C3F #D64937 #D5D5D5
-            active_workspace #3C3C3F #257284 #D5D5D5
-            inactive_workspace #E5E5E5 #2d2d2d
-            urgent_workspace #E5E5E5 #29A048
-        }
-}
-
-
-bar {
-    position bottom
-    output DVI-D-0
-    workspace_buttons yes
-    font pango:FantasqueSansMono, FontAwesome 
-
-
-    status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
-    colors  {
-        background #3C3C3F
-        statusline #D5D5D5
-
-        focused_workspace #3C3C3F #D64937 #D5D5D5
-        active_workspace #3C3C3F #257284 #D5D5D5
-        inactive_workspace #E5E5E5 #2d2d2d
-        urgent_workspace #E5E5E5 #29A048
-    }
-
-}
-
-
-#Laptop bar
-bar {
-        position bottom
-        output eDP-1
-        workspace_buttons yes
-        #font -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*, Icons 8
-        font pango:FantasqueSansMono, FontAwesome 
         status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
         colors  {
             background #3C3C3F

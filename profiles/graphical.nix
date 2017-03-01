@@ -31,6 +31,7 @@
     xorg.xev
     xorg.xprop
     xsel
+    redshift
 
     #Misc xfce things
     xfce.exo
@@ -72,7 +73,17 @@
     windowManager.i3.enable = true;
     windowManager.i3.configFile = /etc/nixos/dotfiles/i3/i3config;
     displayManager.lightdm.enable = true;
-
   };
+  
+
+  services.redshift = {
+    enable = true;
+    latitude = "43.03817561648102";
+    longitude = "-77.71419525146484";
+    temperature.day = 6200;
+    temperature.night = 3800;
+    brightness.night = ".9";
+  };
+
 
 }

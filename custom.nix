@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
 
-  networking.hostName = "HenryNixosLaptop"; # Define your hostname.
+  networking.hostName = "HenryNixosDesktop"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -14,5 +14,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.splix pkgs.hplip ];
+
 
 }
