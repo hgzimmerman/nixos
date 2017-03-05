@@ -60,7 +60,7 @@
     isNormalUser = true;
     home = "/home/hzimmerman";
     description = "Henry Zimmerman";
-    extraGroups = [ "wheel" "networkmanager" "audio" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "docker" "plex"];
     uid = 1000;
   };
   users.extraUsers.root = {
