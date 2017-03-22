@@ -28,6 +28,7 @@
 
     # Languages
     python3
+    openjdk
     cmake
     gnumake
     clang

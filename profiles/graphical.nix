@@ -1,6 +1,20 @@
 { config, pkgs, ... }:
 
+
+
+
+
 {
+  nixpkgs.config = {
+    firefox = {
+      enableOfficalBranding = true;
+    };
+
+
+
+  };
+
+
 
   environment.systemPackages = with pkgs; [
 
