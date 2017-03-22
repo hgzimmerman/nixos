@@ -172,6 +172,7 @@ exec --no-startup-id pavucontrol
 #run forever young bootup song
 exec --no-startup-id terminator --command='mplayer ~/.dotfiles/static/startup_sounds/startup_forever_young_dmg.mp3 -loop 1'
 exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 
 exec --no-startup-id feh --bg-scale ~/Downloads/wallpaper.jpg
 
@@ -184,7 +185,6 @@ assign [class="Rhythmbox"] 9:Music
 #for_window [title="mocp"] move container to workspace 9:Music
 assign [class="Vlc"] 9:Music
 assign [class="Pavucontrol"] 10:Config
-assign [class="Btsync-gui"] 10:Config
 assign [class="libreoffice"] 6:Misc
 assign [class="jetbrains-android-studio"]  5:code
 assign [class="subl3"] 5:code
@@ -206,9 +206,12 @@ for_window [class="Chromium"] border 1pixel
 for_window [class="libreoffice"] border none
 for_window [class="Google-chrome-unstable"] border 1pixel
 for_window [class="Telegram"] border 1pixel
+for_window [class="telegram-desktop"] border 1pixel
 for_window [class="jetbrains-android-studio"] border 1pixel
 for_window [class="Subl3"] border 1pixel
 for_window [class="evince"] border 1pixel
+for_window [class="atom"] border 1pixel
+for_window [class="Atom"] border 1pixel
 
 # Set floating
 for_window [title="rrun"] floating enable
