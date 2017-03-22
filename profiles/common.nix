@@ -39,7 +39,6 @@
     cargo
     nodejs
     gnuplot
-    texLiveFull
     (texlive.combine {
       inherit (texlive)
         collection-basic
