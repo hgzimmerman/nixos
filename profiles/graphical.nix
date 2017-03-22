@@ -13,7 +13,9 @@
     vlc
     pavucontrol
     gnome3.nautilus
-    tdesktop
+    tdesktop # telegram
+
+    atom
 
     #Printer Drivers
     hplip

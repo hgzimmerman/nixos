@@ -24,6 +24,7 @@
     unzip
     unrar
     p7zip
+    tree
 
 
     # Languages
@@ -37,8 +38,34 @@
     rustc
     cargo
     nodejs
-    texlive.combined.scheme-context
-
+    gnuplot
+    texLiveFull
+    (texlive.combine {
+      inherit (texlive)
+        collection-basic
+        metafont
+        xits
+        graphics
+        amsmath
+        collection-bibtexextra
+        collection-binextra
+        collection-context
+        collection-formatsextra
+        collection-fontutils
+        collection-genericextra
+        collection-genericrecommended
+        collection-langcyrillic
+        collection-langenglish
+        collection-latex
+        collection-latexextra
+        collection-latexrecommended
+        collection-mathextra
+        collection-pictures
+        collection-plainextra
+        collection-pstricks
+        collection-science
+        collection-xetex;
+    })
 
   ];
 
