@@ -116,7 +116,7 @@ label-unmounted-foreground = ${colors.blue}
 type            = internal/i3
 format          = <label-state><label-mode>
 index-sort      = true
-wrapping-scroll = true
+wrapping-scroll = false
 strip-wsnumbers = true
 pin-workspaces  = true
 
@@ -234,7 +234,7 @@ format-padding     = 2
 
 type      = internal/cpu
 interval  = 2
-label     =  %percentage%%
+label     =  %percentage:2%%
 padding   = 0
 
 [module/wlan]
@@ -254,7 +254,7 @@ label-connected-background    = ${colors.tcyan}
 label-disconnected-foreground    = ${colors.bgrey}
 label-disconnected-background    = ${colors.tcyan}
 
-label-connected    =  %essid%
+label-connected    =  %essid% %downspeed:9%↓%upspeed:9%↑
 label-disconnected = 
 
 

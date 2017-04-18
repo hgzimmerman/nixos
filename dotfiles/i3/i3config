@@ -165,6 +165,11 @@ workspace "8:Gaming" output  DP-1
 workspace "9:Music" output DP-1
 workspace "10:Config" output HDMI-1 
 
+
+
+#start polybar
+exec_always --no-startup-id /etc/nixos/dotfiles/i3/launch_polybar.sh 
+
 #start firefox on workspace 3, but not restarts
 exec --no-startup-id i3-msg 'workspace 3:Web; exec firefox; workspace 1:Shell'
 exec --no-startup-id i3-msg 'workspace 1:Shell; exec terminator'
@@ -273,17 +278,6 @@ bindsym $mod+p mode "resize"
 #}
 
 
-
-bar {
-	status_command polybar --config=/etc/nixos/dotfiles/i3/config DP-1
-	position bottom
-	mode invisible
-}
-bar {
-	status_command polybar --config=/etc/nixos/dotfiles/i3/config eDP-1
-	position bottom
-	mode invisible
-}
 
 
 
