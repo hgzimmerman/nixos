@@ -250,26 +250,39 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-bar {
+#bar {
         # status_command sh /home/ziggypop/downloads/tmux-powerline/powerline.sh left
-        position bottom
-        workspace_buttons yes
-        #font -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*, Icons 8
-        font pango:FantasqueSansMono, FontAwesome 
-        #font pango: AF2
-        #, Arch-Font3-10 
-        #status_command i3status
-        status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
-        colors  {
-            background #3C3C3F
-            statusline #D5D5D5
+ #       position bottom
+ #       workspace_buttons yes
+ #       #font -*-termsyn.icons-medium-r-*-*-11-*-*-*-*-*-*-*, Icons 8
+ #       font pango:FantasqueSansMono, FontAwesome 
+ #       #font pango: AF2
+ #       #, Arch-Font3-10 
+ #       #status_command i3status
+ #       status_command i3blocks -c /etc/nixos/dotfiles/i3/i3blocks.conf
+ #       colors  {
+ #           background #3C3C3F
+ #           statusline #D5D5D5
             #separator #D64937
 
-            focused_workspace #3C3C3F #D64937 #D5D5D5
-            active_workspace #3C3C3F #257284 #D5D5D5
-            inactive_workspace #E5E5E5 #2d2d2d
-            urgent_workspace #E5E5E5 #29A048
-        }
+ #           focused_workspace #3C3C3F #D64937 #D5D5D5
+ #           active_workspace #3C3C3F #257284 #D5D5D5
+ #           inactive_workspace #E5E5E5 #2d2d2d
+ #           urgent_workspace #E5E5E5 #29A048
+ #       }
+#}
+
+
+
+bar {
+	status_command polybar --config=/etc/nixos/dotfiles/i3/config DP-1
+	position bottom
+	mode invisible
+}
+bar {
+	status_command polybar --config=/etc/nixos/dotfiles/i3/config eDP-1
+	position bottom
+	mode invisible
 }
 
 
@@ -305,6 +318,7 @@ bindsym $mod+minus scratchpad show
 
 # Move current workspace to the next output (functionally toggles with only two outputs)
 bindsym $mod+q move workspace to output right
+bindsym $mod+Shift+q move workspace to output down
 
 
 

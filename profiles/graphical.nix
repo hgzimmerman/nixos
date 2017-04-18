@@ -28,6 +28,7 @@
     pavucontrol
     gnome3.nautilus
     tdesktop # telegram
+    xarchive
 
     atom
 
@@ -40,6 +41,7 @@
     networkmanagerapplet
     lemonbar
     i3blocks
+    polybar
     feh
     pasystray
     slop
@@ -62,17 +64,22 @@
 
 
     #Themes
-    gtk gnome.gnomeicontheme hicolor_icon_theme shared_mime_info
+#    gtk gnome.gnomeicontheme
+    hicolor_icon_theme shared_mime_info
+
     numix-gtk-theme
     numix-icon-theme-circle
-    arc-gtk-theme
+    arc-theme
     adapta-gtk-theme
 
   ];
-
-
-
-
+nixpkgs.config.packageOverrides = pkgs: {
+    polybar = pkgs.polybar.override {
+      i3Support = true;
+      iwSupport = true;
+      mpdSupport = true;
+    };
+  };
 
   #STEAM and PulseAudio
   hardware = {

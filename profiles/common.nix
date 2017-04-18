@@ -25,10 +25,11 @@
     unrar
     p7zip
     tree
-
+    psmisc
 
     # Languages
     python3
+    ruby
     openjdk
     cmake
     gnumake
