@@ -107,7 +107,7 @@ mount-0 = /
 mount-1 = /home
 #mount-2 = /invalid/mountpoint
 
-label-mounted              = %mountpoint%: %percentage_free%
+label-mounted              = %mountpoint%: %percentage_free%%
 
 label-unmounted            = %mountpoint%: not mounted
 label-unmounted-foreground = ${colors.blue}
@@ -117,7 +117,7 @@ type            = internal/i3
 format          = <label-state><label-mode>
 index-sort      = true
 wrapping-scroll = false
-strip-wsnumbers = true
+strip-wsnumbers = false
 pin-workspaces  = true
 
 label-mode-foreground      = ${colors.blue}
@@ -131,6 +131,10 @@ label-unfocused            = %name%
 label-unfocused-background = ${colors.tgrey}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding    = 5
+
+label-visible              = %{B#bdae93 F#458588}%{F- B#458588}   %name%   %{B#bdae93 F#458588}
+label-visible-background   = ${colors.red}
+label-visible-padding      = 0 
 
 label-urgent               = %name%!
 label-urgent-background    = ${colors.tgrey}
@@ -402,15 +406,15 @@ format-prefix                 = 
 format-prefix-background      = ${module/battery.format-background}
 format-prefix-foreground      = ${self.label-background}
 
-format-suffix                 = 
-format-suffix-foreground      = ${self.label-background}
+#format-suffix                 = 
+#format-suffix-foreground      = ${self.label-background}
 
 format-warn-prefix            = 
 format-warn-prefix-background = ${module/battery.format-background}
 format-warn-prefix-foreground = ${self.label-warn-background}
 
-format-warn-suffix            = 
-format-warn-suffix-foreground = ${self.label-warn-background}
+#format-warn-suffix            = 
+#format-warn-suffix-foreground = ${self.label-warn-background}
 
 format-warn           = <label-warn>
 label-warn-background = ${colors.tred}
