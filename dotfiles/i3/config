@@ -48,7 +48,7 @@ border-color = ${self.background}
 font-0 = FantasqueSansMono:size=10;0
 font-1 = FontAwesome:size=10;1
 
-modules-left   = i3 xwindow mpd
+modules-left   = i3 xwindow #mpd
 modules-center = date
 modules-right  = xkeyboard backlight volume memory cpu wlan eth battery temperature
 
@@ -72,7 +72,7 @@ border-color = ${self.background}
 font-0 = FantasqueSansMono:size=10;0
 font-1 = FontAwesome:size=10;1
 
-modules-left   = i3 xwindow mpd
+modules-left   = i3 xwindow #mpd
 modules-center = date
 modules-right  = xkeyboard backlight volume memory cpu wlan eth battery temperature
 
@@ -123,23 +123,23 @@ pin-workspaces  = true
 label-mode-foreground      = ${colors.blue}
 label-mode-background      = ${colors.tgrey}
 
-label-focused              = %{B#bdae93 F#84AB7A}%{F- B#84AB7A}   %name%   %{B#bdae93 F#84AB7A}
+label-focused              = %{B#bdae93 F#84AB7A}%{F- B#84AB7A}  %name%  %{B#bdae93 F#84AB7A}
 label-focused-foreground   = ${colors.foreground}
 label-focused-padding      = 0
 
 label-unfocused            = %name%
 label-unfocused-background = ${colors.tgrey}
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-padding    = 5
+label-unfocused-padding    = 3
 
-label-visible              = %{B#bdae93 F#458588}%{F- B#458588}   %name%   %{B#bdae93 F#458588}
+label-visible              = %{B#bdae93 F#458588}%{F- B#458588}  %name%  %{B#bdae93 F#458588}
 label-visible-background   = ${colors.red}
 label-visible-padding      = 0 
 
 label-urgent               = %name%!
 label-urgent-background    = ${colors.tgrey}
 label-urgent-foreground    = ${colors.red}
-label-urgent-padding       = 5
+label-urgent-padding       = 3
 
 format-prefix            = 
 format-prefix-foreground = ${colors.tgrey}
