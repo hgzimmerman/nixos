@@ -25,7 +25,8 @@
     unrar
     p7zip
     tree
-    psmisc
+    psmisc # killall
+    python35Packages.youtube-dl
 
     # Languages
     python3
