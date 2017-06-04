@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
 
-
  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -27,6 +26,10 @@
     tree
     psmisc # killall
     python35Packages.youtube-dl
+    zsh-prezto
+
+
+    idea.idea-community
 
     # Languages
     python3
@@ -38,8 +41,8 @@
     gcc
     mono
     go
-    rustc
-    cargo
+    rustNightly.rustc
+    rustNightly.cargo
     nodejs
     gnuplot
     (texlive.combine {
@@ -71,6 +74,7 @@
 
   ];
 
+  nixpkgs.config.packageOverrides = pkgs: { oraclejdk8 = pkgs.openjdk8; }; 
   virtualisation.docker.enable = true;
 
 
@@ -101,6 +105,10 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
+  #programs.zsh.shellInit = "";
+ # programs.zsh.interactiveShellInit = "source /etc/nixos/dotfiles/zsh/zshrc";
 
+
+    
 }
 
