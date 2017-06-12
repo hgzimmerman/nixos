@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 {
 
-  networking.hostName = "HenryNixosDesktop"; # Define your hostname.
+  networking.hostName = "NixosLaptop"; # Define your hostname.
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Chicago";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

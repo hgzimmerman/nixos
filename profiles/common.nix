@@ -41,8 +41,8 @@
     gcc
     mono
     go
-    rustNightly.rustc
-    rustNightly.cargo
+  #  rustNightly.rustc
+  # rustNightly.cargo
     nodejs
     gnuplot
     (texlive.combine {
@@ -97,7 +97,7 @@
     uid = 1000;
   };
   users.extraUsers.root = {
-    extraGroups = [ "audio" ];
+    extraGroups = [ "audio" "plex"];
   };
 
 

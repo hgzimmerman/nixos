@@ -22,6 +22,7 @@
     #User Programs
     evince
     firefox
+    vivaldi
     zsh
     terminator
     vlc

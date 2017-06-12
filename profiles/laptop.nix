@@ -33,4 +33,10 @@ services.xserver = {
 
 programs.light.enable = true;
 
+
+services.postgresql.enable = true;
+services.postgresql.authentication = "local all all ident";
+
+
+
 }

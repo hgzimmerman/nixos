@@ -14,7 +14,7 @@
       ./profiles/graphical.nix
       ./profiles/laptop.nix
       #./profiles/desktop.nix
-      #./profiles/server.nix
+      ./profiles/server.nix
       #./virtualization.nix
     ];
 
@@ -32,6 +32,5 @@
  
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.09";
-
 
 }

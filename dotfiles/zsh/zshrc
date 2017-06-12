@@ -1,0 +1,138 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="ziggy1"
+
+# Uncomment the following line to use case-sensitive completion.
+CASE_SENSITIVE="false"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to disable command auto-correction.
+# DISABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+ COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+
+
+# git is kinda obvious
+# web-search sets up  aliases for searching. ie: ddg, aw, image, google
+# pass allows completion of pass
+# wd is for completion for wd
+# dirhistory allows ALT+left or right to move in dir history
+# archlinux is for arch stuff
+# catimg aliases catimg which outputs a image to stdout
+# rsync adds some rsync aliases
+# gpg-agent sets up gpg
+# svn does svn stuff
+# battery is required for the 'ziggy' prompt to work
+# vi-mode allows the use of vim bindings in the cli;
+# press Esc or Meta+h to use;
+# peress 'Esc + v' or Meta+v to open vim on the current command
+# z is completions for z
+#
+plugins=(git web-search pass wd dirhistory archlinux catimg rsync gpg-agent svn battery z)
+
+
+# make tab completion work with one press instead of two
+unsetopt listambiguous
+
+export LC_ALL=en_US.UTF-8
+
+## Sources
+source $ZSH/oh-my-zsh.sh
+source $HOME/.aliases
+source $HOME/.keybindings
+source $HOME/.functions
+# source /usr/bin/z.sh
+
+## PATHs 
+export GOPATH=~/code/githubUtilities/hackerNews
+
+# Personal path
+PATH="$PATH:$HOME/.dotfiles/bin"
+# normal bin paths
+PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
+# other paths
+PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin:$GOPATH/bin:$HOME/.local/bin"
+# android
+PATH="$PATH:$HOME/code/Android/Sdk/platform-tools"
+export PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+export EDITOR='nvim'
+export COMPACT='false'
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+
+# Sets the terminal to be compatible with urxvt over ssh
+export TERM=xterm-256color
+
+# Configure the completion styles
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' expand prefix
+zstyle ':completion:*' format ''\''Completing'\'' %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' menu select=3
+zstyle ':completion:*' original true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/ziggypop/.zshrc'
+
+setopt appendhistory autocd beep
+
+
+
+# Man page coloring
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
+export LESS_TERMCAP_md=$(printf '\e[01;34m') # enter double-bright mode – bold, blue
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan 
+
+
+unset GREP_OPTIONS
+
+TERMINAL=terminator
+
+# This apparently needs to be sourced at the bottom of the rc
+source $HOME/.dotfiles/static/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
