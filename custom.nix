@@ -4,6 +4,7 @@
   networking.hostName = "NixosLaptop"; # Define your hostname.
 
   # Set your time zone.
+  #time.timeZone = "America/New_York";
   time.timeZone = "America/Chicago";
 
   # Enable the OpenSSH daemon.
@@ -17,6 +18,5 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.splix pkgs.hplip ];
-
 
 }

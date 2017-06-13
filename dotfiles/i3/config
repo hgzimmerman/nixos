@@ -56,6 +56,34 @@ tray-position    = right
 tray-padding = 5
 tray-scale = 1
 
+
+
+[bar/HDMI-1]
+monitor  = HDMI-1
+bottom   = true
+width    = 100%
+height   = 17
+
+background = ${colors.transparent}
+foreground = ${colors.foreground}
+
+border-left-size = 15
+border-right-size = 15
+border-color = ${self.background}
+
+font-0 = FantasqueSansMono:size=10;0
+font-1 = FontAwesome:size=10;1
+
+modules-left   = i3 xwindow #mpd
+modules-center = date
+modules-right  = xkeyboard backlight volume memory cpu wlan eth battery temperature
+
+tray-position    = right
+tray-padding = 5
+tray-scale = 1
+
+
+
 [bar/eDP-1]
 monitor  = eDP-1
 bottom   = true
