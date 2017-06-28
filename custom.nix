@@ -10,7 +10,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   programs.mosh.enable = true;
-  services.openssh.ports = [2222];
+  services.openssh.ports = [22];
   services.openssh.forwardX11 = true;
   programs.ssh.forwardX11 = true;
   programs.ssh.setXAuthLocation = true;

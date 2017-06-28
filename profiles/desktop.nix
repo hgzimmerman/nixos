@@ -6,6 +6,7 @@
     moc
     mumble
     steam
+    docker
     xorg.xf86videointel
   ];
 
@@ -40,5 +41,8 @@ services.xserver = {
     videoDrivers = [ "mesa" ];
 #    videoDrivers = [ "nvidia" ];
   };
+
+  virtualisation.docker.enable = true;
+
 
 }
