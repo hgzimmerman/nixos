@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
 
-
  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -28,6 +27,8 @@
     python35Packages.youtube-dl
     zsh-prezto
 
+    idea.idea-community
+
     # Languages
     python3
     ruby
@@ -38,8 +39,8 @@
     gcc
     mono
     go
-    rustc
-    cargo
+    rustNightly.rustc
+    rustNightly.cargo
     nodejs
     gnuplot
     (texlive.combine {
@@ -71,6 +72,8 @@
 
   ];
 
+  nixpkgs.config.packageOverrides = pkgs: { oraclejdk8 = pkgs.openjdk8; }; 
+  virtualisation.docker.enable = true;
 
 
   # Fonts are in common.nix, because even though a sever may not have an x environment, using supported fonts is nice
@@ -100,6 +103,9 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
+  #programs.zsh.shellInit = "";
+ # programs.zsh.interactiveShellInit = "source /etc/nixos/dotfiles/zsh/zshrc";
+
 
   programs.zsh.interactiveShellInit = ''
 

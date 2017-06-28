@@ -31,4 +31,6 @@ services.xserver = {
     videoDrivers = [ "mesa" ];
   };
 
+programs.light.enable = true;
+
 }

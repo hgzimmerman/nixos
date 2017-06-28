@@ -7,6 +7,7 @@
     mumble
     steam
     docker
+    xorg.xf86videointel
   ];
 
   fileSystems."/mnt/media" = {
@@ -38,6 +39,7 @@ services.xserver = {
 
 
     videoDrivers = [ "mesa" ];
+#    videoDrivers = [ "nvidia" ];
   };
 
   virtualisation.docker.enable = true;
