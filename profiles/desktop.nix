@@ -6,6 +6,7 @@
     moc
     mumble
     steam
+    docker
   ];
 
   fileSystems."/mnt/media" = {
@@ -38,5 +39,8 @@ services.xserver = {
 
     videoDrivers = [ "mesa" ];
   };
+
+  virtualisation.docker.enable = true;
+
 
 }

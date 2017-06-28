@@ -1,0 +1,248 @@
+# 
+# This is a fork of agnoster's theme.
+# The original can be found here:#
+# agnoster's Theme - https://gist.github.com/3712874
+#
+#
+#
+#
+# # README
+#
+# In order for this theme to render correctly, you will need a
+# [Powerline-patched font](https://gist.github.com/1595572).
+#
+# In addition, I recommend the
+# [Solarized theme](https://github.com/altercation/solarized/) and, if you're
+# using it on Mac OS X, [iTerm 2](http://www.iterm2.com/) over Terminal.app -
+# it has significantly better color fidelity.
+#
+# # Goals
+#
+# The aim of this theme is to only show you *relevant* information. Like most
+# prompts, it will only show git information when in a git working directory.
+# However, it goes a step further: everything from the current user and
+# hostname to whether the last call exited with an error to whether background
+# jobs are running in this shell will all be displayed automatically when
+# appropriate.
+
+### Segment drawing
+# A few utility functions to make it easy and re-usable to draw segmented prompts
+setopt promptsubst
+
+CURRENT_BG='NONE'
+PRIMARY_FG=white
+SECONDARY_FG=black
+# Change DEFAULT_USER to your username
+DEFAULT_USER=hzimmerman
+# Change LAPTOP to the hostname of your laptop
+LAPTOP=ZiggyYoga
+HOST=$(hostname)
+
+# Characters
+SEGMENT_SEPARATOR="\ue0b0"
+SICKLEHAMMER="\u262D"
+LAMBDA="\u03BB"
+MALE="\u2642"
+# PLUSMINUS="\u00b1"
+BRANCH="\ue0a0"
+DETACHED="\u27a6"
+CROSS="\u2718"
+LIGHTNING="\u26a1"
+GEAR="\u2699"
+HEART="♥"
+CHECK="✔"
+
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
+  else
+    print -n "%{$bg%}%{$fg%}"
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && print -n $3
+}
+
+# End the prompt, closing any open segments
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+    print -n "%{%k%}"
+  fi
+  print -n "%{%f%}"
+  CURRENT_BG=''
+}
+
+### Prompt components
+# Each component will draw itself, and hide itself if no information needs to be shown
+
+# Context: user@hostname (who am I and where am I)
+prompt_context() {
+  local user=`whoami`
+
+  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
+    prompt_segment $SECONDARY_FG red " %(!.%{%F{yellow}%}.)$user@%m "
+  fi
+}
+
+# Git: branch/detached head, dirty status
+prompt_git() {
+  local color ref
+  is_dirty() {
+    test -n "$(git status --porcelain --ignore-submodules)"
+  }
+  ref="$vcs_info_msg_0_"
+  if [[ -n "$ref" ]]; then
+    if is_dirty; then
+      color=yellow
+      # ref="${ref} $SICKLEHAMMER"
+      ref="${ref} $LAMBDA"
+      # ref="${ref} $PLUSMINUS"
+    else
+      color=cyan
+      if  [ "$COMPACT" = "false" ]; then
+          ref="${ref} $CHECK "
+      else
+          ref="${ref} "
+      fi
+  fi
+    if [[ "${ref/.../}" == "$ref" ]]; then
+      ref="$BRANCH $ref"
+    else
+      ref="$DETACHED ${ref/.../}"
+    fi
+    prompt_segment $color $SECONDARY_FG
+    print -Pn " $ref"
+  fi
+}
+
+# Dir: current working directory
+prompt_dir() {
+  if [ $COLUMNS -le 140 ]; then
+    prompt_segment blue $PRIMARY_FG ' %4(c:...:)%3c '
+  else 
+    prompt_segment blue $PRIMARY_FG ' %~ '
+  fi
+}
+
+# Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS $RETVAL"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
+
+  [[ -n "$symbols" ]] && prompt_segment $PRIMARY_FG default " $symbols "
+}
+
+# second line
+second_line() {
+  local symbols1
+  symbols1=()
+  [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$HEART" # error message
+  # [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$CROSS" # error message
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols1+="%{%F{cyan}%}$GEAR" #are there background jobs?
+  [[ $UID -eq 0 ]] && symbols1+="%{%F{yellow}%}$LIGHTNING" # Is Root?
+
+  ([[ -n "$symbols1" ]] && prompt_segment black black "$symbols1 ") || prompt_segment black white "$MALE "
+
+  print -n "%{%k%F{black}%}$SEGMENT_SEPARATOR" #Ending separator
+  print -n "%{%f%}" #Add a space after the separator.
+}
+# Day, Month, Day of Month
+prompt_time1() {
+    if [ "$COMPACT" = "false" ]; then
+        prompt_segment red $SECONDARY_FG ' %D{%a, %b %d }'
+    else
+        prompt_segment red $SECONDARY_FG ' %w '
+    fi
+}
+
+# hours, minutes, seconds
+prompt_time2() {
+    if [ "$COMPACT" != "true" ]; then
+        prompt_segment $PRIMARY_FG $SECONDARY_FG ' %D{%H:%M:%S }'
+    else
+        prompt_segment $PRIMARY_FG $SECONDARY_FG ' %D{%H:%M }'
+    fi
+}
+
+# Get the error code of the last command.
+# This needs to be run first to avoid clobbering the value with the commands to draw the prompt.
+exit_info() {
+    STATUS=$?
+}
+
+# Shows a representation of the battery life and how much time is left.
+# This component slows down re-drawing of the prompt quite a lot. Comment it 
+# out in prompt_ziggy_main() if you want to maintain speed
+# requires that the string: "battery" be present in "plugins" in zshrc
+prompt_battery() {
+    # make sure LAPTOP equals the output of hostname if you want this to work
+    if [ "$HOST" = "$LAPTOP" ]; then
+        if [ $COLUMNS -le 110 ]; then
+            # The colors are relatively ineffectual for determining the color of
+            # this prompt.
+            # If you want to change this, look into .oh-my-zsh/plugins/battery/battery.plugin.zsh
+            # I have edited this file, so this prompt will not work with the default omz 
+            prompt_segment black black " $(battery_level_gauge)"
+        else
+            prompt_segment black yellow "$(battery_time_remaining) $(battery_level_gauge)"
+        fi
+    fi
+}
+
+
+
+
+
+
+
+## Main prompt
+prompt_ziggy_main() {
+  CURRENT_BG='NONE'
+  prompt_time1
+  prompt_time2
+  # prompt_status # this functionality was rolled into second_line
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_battery
+  prompt_end
+  print -n '\n'
+  second_line
+}
+
+prompt_ziggy_precmd() {
+  exit_info
+  vcs_info
+  PROMPT='%{%f%b%k%}$(prompt_ziggy_main)'
+  RPROMPT=''
+}
+
+prompt_ziggy_setup() {
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  prompt_opts=(cr subst percent)
+
+  add-zsh-hook precmd prompt_ziggy_precmd
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' check-for-changes false
+  zstyle ':vcs_info:git*' formats '%b'
+  zstyle ':vcs_info:git*' actionformats '%b (%a)'
+}
+
+prompt_ziggy_setup "$@"

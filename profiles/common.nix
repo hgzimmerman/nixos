@@ -16,7 +16,6 @@
     traceroute
     curl
     acpi
-    docker
     usbutils
     git
     htop
@@ -27,6 +26,7 @@
     tree
     psmisc # killall
     python35Packages.youtube-dl
+    zsh-prezto
 
     # Languages
     python3
@@ -71,7 +71,6 @@
 
   ];
 
-  virtualisation.docker.enable = true;
 
 
   # Fonts are in common.nix, because even though a sever may not have an x environment, using supported fonts is nice
@@ -102,5 +101,45 @@
   programs.zsh.enable = true;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
 
+  programs.zsh.interactiveShellInit = ''
+
+    export ZDOTDIR=${pkgs.zsh-prezto}/
+    export NIXOS=/etc/nixos/
+    export ZSHCONFIG=$NIXOS/dotfiles/zsh
+
+    
+
+    source "$ZDOTDIR/init.zsh"
+    source $ZSHCONFIG/zpreztorc
+    source "$ZDOTDIR/init.zsh"
+
+  '';
+
+  programs.zsh.promptInit = ''
+     autoload -U promptinit && promptinit && prompt ziggy 
+  '';
+
+  programs.zsh.shellAliases = {
+    la="ls -A";
+    lla="ll -A";
+    lr="ls -R";
+    lx="ll -BX";
+    lz="ll -rS";
+    no="ls";
+    lj="ls *.java";
+
+
+    Crun="cargo run";
+    Ctest="cargo test";
+
+
+    fastping="ping -c 100 -i .2";
+    myip="curl http://ipecho.net/plain; echo";
+    ducks="du -cks * | sort -rn | head";
+
+    busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"; 
+  };
+
 }
+
 
