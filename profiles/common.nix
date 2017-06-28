@@ -109,6 +109,7 @@
  # programs.zsh.interactiveShellInit = "source /etc/nixos/dotfiles/zsh/zshrc";
 
 
+programs.ssh.extraConfig = "ServerAliveInterval 60";
     
 }
 
