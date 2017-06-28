@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 {
 
+
+  networking.hostName = "NixosLaptop"; # Define your hostname.
+
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
   ];

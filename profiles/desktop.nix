@@ -2,6 +2,8 @@
 {
 
 
+  networking.hostName = "NixosDesktop"; # Define your hostname.
+
   environment.systemPackages = with pkgs; [
     moc
     mumble

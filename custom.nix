@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
 
-  networking.hostName = "NixosLaptop"; # Define your hostname.
 
   # Set your time zone.
   #time.timeZone = "America/New_York";

@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
 
+  networking.hostName = "NixosServer"; # Define your hostname.
+
   environment.systemPackages = with pkgs; [
     murmur
     zfs
