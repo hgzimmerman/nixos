@@ -78,7 +78,6 @@ function setBacklightDell {
     MAX_BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/max_brightness)
     ((percent_brightness = $1 / 100.0 * $MAX_BRIGHTNESS))
     rounded=$((int(rint($percent_brightness))))
-    echo $rounded
 
     echo $rounded | sudo tee /sys/class/backlight/intel_backlight/brightness
 }
