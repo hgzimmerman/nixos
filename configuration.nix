@@ -8,8 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./custom.nix
       ./neovim.nix
+      ./zsh.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
       ./profiles/laptop.nix

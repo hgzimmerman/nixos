@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+  # Set your time zone.
+  #time.timeZone = "America/New_York";
+  time.timeZone = "America/Chicago";
 
   networking.hostName = "NixosServer"; # Define your hostname.
 

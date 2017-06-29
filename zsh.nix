@@ -1,107 +1,61 @@
+{ config, pkgs, ... }:
+{
 
-{ writeText, zsh-prezto, neovim, less }:
+  programs.zsh.enable = true;
+  users.defaultUserShell = "/run/current-system/sw/bin/zsh";
 
-let
-  self = writeText "zsh-config"
-    ''
-      # Color output (auto set to 'no' on dumb terminals).
-      zstyle ':prezto:*:*' color 'yes'
 
-      # Set the Prezto modules to load (browse modules).
-      # The order matters.
-      zstyle ':prezto:load' pmodule \
-        'environment' \
-        'terminal' \
-        'editor' \
-        'history' \
-        'history-substring-search'\
-        'directory' \
-        'spectrum' \
-        'utility' \
-        'git' \
-        'completion' \
-        'prompt' \
-        'fasd' \
-        'ssh' \
-        'screen' \
-        'nix' \
-        'ruby'
+  programs.zsh.interactiveShellInit = ''
 
-      # Set the key mapping style to 'emacs' or 'vi'.
-      zstyle ':prezto:module:editor' key-bindings 'vi'
+    export ZDOTDIR=${pkgs.zsh-prezto}/
+    export NIXOS=/etc/nixos/
+    export ZSHCONFIG=$NIXOS/dotfiles/zsh
 
-      # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-      #zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
-      # History Substring Search
-      #
-      zstyle ‘:prezto:module:history-substring-search’ color ‘yes’
-      # Set the query found color.
-      zstyle ‘:prezto:module:history-substring-search:color’ found ‘bg=green,fg=white,bold’
-      # Set the query not found color.
-      zstyle ‘:prezto:module:history-substring-search:color’ not-found ‘bg=red,fg=white,bold’
+    source $ZSHCONFIG/zpreztorc
+    source "$ZDOTDIR/init.zsh"
 
-      # Set the prompt theme to load.
-      # Setting it to 'random' loads a random theme.
-      # Auto set to 'off' on dumb terminals.
-      zstyle ':prezto:module:prompt' theme 'paradox'
+  '';
 
-      # Set the SSH identities to load into the agent.
-      zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github_rsa'
+  programs.zsh.promptInit = ''
+     autoload -U promptinit && promptinit && prompt ziggy 
+  '';
 
-      # Set syntax highlighters.
-      # By default, only the main highlighter is enabled.
-      zstyle ':prezto:module:syntax-highlighting' highlighters \
-        'main' \
-        'brackets' \
-        'pattern' \
-        'cursor' \
-        'root'
+  programs.zsh.shellAliases = {
+    la="ls -A";
+    lla="ll -A";
+    lr="ls -R";
+    lx="ll -BX";
+    lz="ll -rS";
+    no="ls";
+    lj="ls *.java";
 
-      # Set syntax highlighting styles.
-      zstyle ':prezto:module:syntax-highlighting' styles \
-        'builtin' 'bg=blue' \
-        'command' 'bg=blue' \
-        'function' 'bg=blue'
 
-      # Auto set the tab and window titles.
-      zstyle ':prezto:module:terminal' auto-title 'yes'
+    Crun="cargo run";
+    Ctest="cargo test";
 
-      # Set the window title format.
-      zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
-      # Auto start screen sessions locally and in ssh sessions
-      zstyle ':prezto:module:screen:auto-start' remote 'yes'
+    fastping="ping -c 100 -i .2";
+    myip="curl http://ipecho.net/plain; echo";
+    ducks="du -cksh * | sort -rn | head";
 
-      # Auto convert .... to ../..
-      zstyle ':prezto:module:editor' dot-expansion 'yes'
+    busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"; 
 
-      # -------------------------------------------------
 
-      export EDITOR='${neovim}/bin/nvim'
-      export VISUAL='${neovim}/bin/nvim'
-      export PAGER='${less}/bin/less -R'
-      export KEYTIMEOUT=1
-    '';
-in {
-  environment_etc =
-    [ { source = "${zsh-prezto}/runcoms/zlogin";
-        target = "zlogin";
-      }
-      { source = "${zsh-prezto}/runcoms/zlogout";
-        target = "zlogout";
-      }
-      { source = self;
-        target = "zpreztorc";
-      }
-      { source = "${zsh-prezto}/runcoms/zprofile";
-        target = "zprofile.local";
-      }
-      { source = "${zsh-prezto}/runcoms/zshenv";
-        target = "zshenv.local";
-      }
-      { source = "${zsh-prezto}/runcoms/zshrc";
-        target = "zshrc.local";
-      }
-    ];
+    ga="git add";
+    gp="git push";
+    gl="git pull";
+    gd="git diff";
+    gst="git status";
+    gss="git status -s";
+    glog="git log --oneline --decorate --graph";
+    grh="git reset HEAD";
+    glum="git pull upstream master";
+    gwch="git whatchanged -p --abbrev-commit --pretty=medium";
+    
+
+  };
+
+
+
 }
