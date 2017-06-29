@@ -84,6 +84,7 @@
       fantasque-sans-mono
       ubuntu_font_family
       font-awesome-ttf
+      comic-neue
     ];
   };
 

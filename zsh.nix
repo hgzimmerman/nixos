@@ -15,6 +15,9 @@
     source $ZSHCONFIG/zpreztorc
     source "$ZDOTDIR/init.zsh"
 
+
+    source $ZSHCONFIG/zsh_functions
+
   '';
 
   programs.zsh.promptInit = ''

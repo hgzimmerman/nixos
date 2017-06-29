@@ -30,6 +30,7 @@
     gnome3.nautilus
     tdesktop # telegram
     xarchive
+    mplayer
 
     atom
 
