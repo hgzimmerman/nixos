@@ -111,6 +111,9 @@ prompt_git() {
     if test "$(git status --porcelain 2>/dev/null | grep "^ M" | wc -l)" != 0 ; then
         return 0
     fi
+    if test "$(git status --porcelain 2>/dev/null | grep "^.M" | wc -l)" != 0 ; then
+        return 0
+    fi
     return 1
   }
   is_added() {
@@ -138,11 +141,10 @@ prompt_git() {
     return 1
   }
   is_staged() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^.." | wc -l)" != 0 ; then
+    if [ "$(git status --porcelain 2>/dev/null | grep "^. " | wc -l)" != 0 ] ; then
         return 0
     fi
     return 1
-
   }
 
 
