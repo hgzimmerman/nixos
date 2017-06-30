@@ -214,7 +214,7 @@ second_line() {
   local symbols1
   symbols1=()
   #[[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$HEART" # error message
-  [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$SAD $STATUS" # error message
+  [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$SAD" # error message
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols1+="%{%F{cyan}%}$GEAR" #are there background jobs?
   [[ $UID -eq 0 ]] && symbols1+="%{%F{yellow}%}$LIGHTNING" # Is Root?
 
