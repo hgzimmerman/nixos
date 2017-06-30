@@ -58,10 +58,6 @@ SAD="\uf119"
 
 
 
-
-
-
-
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
@@ -104,11 +100,12 @@ prompt_context() {
 # Git: branch/detached head, dirty status
 prompt_git() {
   local color ref
+
+  git_status="$(git status --porcelain --ignore-submodules 2>/dev/null | cut -c 1-2)"
   is_dirty() {
-    test -n "$(git status --porcelain --ignore-submodules)"
+    test -n $git_status
   }
 
-  git_status="$(git status --porcelain 2>/dev/null | cut -c 1-2)"
 
   is_modified() {
     if [[ $git_status =~ ".+M" ]]; then
