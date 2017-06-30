@@ -173,11 +173,7 @@ prompt_git() {
       fi
     else
       color=cyan
-      if  [ "$COMPACT" = "false" ]; then
-          ref="${ref} $CHECK "
-      else
-          ref="${ref} "
-      fi
+      ref="${ref} $CHECK "
   fi
     if [[ "${ref/.../}" == "$ref" ]]; then
       ref="$BRANCH $ref"
