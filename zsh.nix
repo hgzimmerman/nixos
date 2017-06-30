@@ -21,7 +21,7 @@
   '';
 
   programs.zsh.promptInit = ''
-     autoload -U promptinit && promptinit && prompt ziggy 
+     autoload -U promptinit && promptinit && prompt ziggy_nerd 
   '';
 
   programs.zsh.shellAliases = {
