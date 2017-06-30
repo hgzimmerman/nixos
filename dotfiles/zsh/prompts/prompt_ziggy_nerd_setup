@@ -107,42 +107,42 @@ prompt_git() {
   is_dirty() {
     test -n "$(git status --porcelain --ignore-submodules)"
   }
+
+  git_status="$(git status --porcelain 2>/dev/null | cut -c 1-2)"
+
   is_modified() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^ M" | wc -l)" != 0 ; then
-        return 0
-    fi
-    if test "$(git status --porcelain 2>/dev/null | grep "^.M" | wc -l)" != 0 ; then
-        return 0
+    if [[ $git_status =~ ".+M" ]]; then
+      return 0
     fi
     return 1
   }
   is_added() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^ A" | wc -l)" != 0 ; then
-        return 0
+    if [[ $git_status =~ "A" ]]; then
+      return 0
     fi
     return 1
   }
   is_deleted() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^ D" | wc -l)" != 0 ; then
-        return 0
+    if [[ $git_status =~ "D" ]]; then
+      return 0
     fi
     return 1
   }
   is_untracked() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^??" | wc -l)" != 0 ; then
-        return 0
+    if [[ $git_status = "??" ]]; then
+      return 0
     fi
     return 1
   }
   is_renamed() {
-    if test "$(git status --porcelain 2>/dev/null | grep "^ R" | wc -l)" != 0 ; then
-        return 0
+    if [[ $git_status =~ "R" ]]; then
+      return 0
     fi
     return 1
   }
   is_staged() {
-    if [ "$(git status --porcelain 2>/dev/null | grep "^. " | wc -l)" != 0 ] ; then
-        return 0
+    if [[ $git_status =~ ". " ]]; then
+      return 0
     fi
     return 1
   }
@@ -169,7 +169,7 @@ prompt_git() {
           ref="${ref}✖ "
       fi
      if is_staged; then
-          ref="${ref}✱ " 
+          ref="${ref}✱ "
       fi
     else
       color=cyan
@@ -214,7 +214,7 @@ second_line() {
   local symbols1
   symbols1=()
   #[[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$HEART" # error message
-  [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$SAD" # error message
+  [[ 0 -ne $STATUS  ]] && symbols1+="%{%F{red}%}$SAD $STATUS" # error message
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols1+="%{%F{cyan}%}$GEAR" #are there background jobs?
   [[ $UID -eq 0 ]] && symbols1+="%{%F{yellow}%}$LIGHTNING" # Is Root?
 
@@ -281,7 +281,7 @@ prompt_ziggy_main() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_battery
+#  prompt_battery
   prompt_end
   print -n '\n'
   second_line
