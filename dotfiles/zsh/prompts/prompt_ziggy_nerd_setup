@@ -103,7 +103,11 @@ prompt_git() {
 
   git_status="$(git status --porcelain --ignore-submodules 2>/dev/null | cut -c 1-2)"
   is_dirty() {
-    test -n $git_status
+#    test -n $git_status
+    if [[ -z "${git_status// }" ]]; then 
+        return 1
+    fi
+    return 0
   }
 
 
