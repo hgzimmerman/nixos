@@ -7,13 +7,14 @@
     mumble
     steam
     xorg.xf86videointel
+    inkscape
   ];
 
-  fileSystems."/mnt/media" = {
-    device = "192.168.1.125:/plex";
-    fsType = "nfs";
-    options = ["x-systemd.automount,noauto"];
-  };
+#  fileSystems."/mnt/media" = {
+#    device = "192.168.1.150:/zfs/plex";
+#    fsType = "nfs";
+#    options = ["x-systemd.automount,noauto"];
+#  };
 
 services.xserver = {
     displayManager.sessionCommands = ''

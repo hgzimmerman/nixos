@@ -12,10 +12,10 @@
       ./neovim.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
-      ./profiles/laptop.nix
-      #./profiles/desktop.nix
+      #./profiles/laptop.nix
+      ./profiles/desktop.nix
       #./profiles/server.nix
-      #./virtualization.nix
+      ./virtualization.nix
     ];
 
 
@@ -27,11 +27,9 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-
  
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
+  system.stateVersion = "17.03";
 
 
 }
