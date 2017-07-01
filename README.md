@@ -15,5 +15,18 @@ You will find that the configs for i3, zsh, and neovim are all contained within 
   * You will likely want to set the default keymapping to something other than Dvorak.
   * You will want to change the default user.
 * Set the appropriate features you want in `configuration.nix` by uncommenting the `.nix` files you wish to use.
-* run `sudo nixos-rebuild switch`
-* enjoy
+* Run `sudo nixos-rebuild switch`
+* Enjoy
+
+## Notable features
+* VFIO GPU passthrough to a VM. 
+  Should work out of the box.
+* Zsh configured with Prezto.
+  Includes custom Powerline prompt.
+* LaTeX packages configured.
+  This was harder than it sounds. Nixos's syntax for setting this up is not obvious.
+
+## Stuff that isn't working right now
+* Pulseaudio remote streaming.
+* Neovim setup is not ideal: some packages are missing or don't work (YouCompleteMe)
+* Rust isn't up to date in the standard nixos packages and currently is managed using nix-env instead of this configuration.
