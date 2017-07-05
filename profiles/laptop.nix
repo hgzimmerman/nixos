@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
+    paprefs
   ];
 
 services.xserver = {
@@ -44,6 +45,8 @@ hardware.pulseaudio.package = pkgs.pulseaudioFull;
 hardware.pulseaudio.tcp.enable = true;
 hardware.pulseaudio.zeroconf.discovery.enable = true;
 hardware.pulseaudio.zeroconf.publish.enable = true;
+hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
+
 
 services.postgresql.enable = true;
 services.postgresql.authentication = "local all all ident";
