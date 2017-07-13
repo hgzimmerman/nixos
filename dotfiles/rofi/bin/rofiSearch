@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+
+if [ -z $@ ]
+then
+
+cat ~/.gshist | sort
+
+else
+    GS=$@
+
+
+    if [ -z grep -q "$GS" "$HOME/.gshist" ] ; then
+        echo $GS >> ~/.gshist
+    fi
+
+    if [ -n "$GS" ]; then 
+        firefox -new-tab https://duckduckgo.com/?q="$GS" >/dev/null
+        i3-msg workspace "3:Web" >/dev/null
+    fi
+fi
+

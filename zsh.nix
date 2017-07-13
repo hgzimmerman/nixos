@@ -18,6 +18,9 @@
 
     source $ZSHCONFIG/zsh_functions
 
+
+    PATH="$PATH:$HOME/.cargo/bin"
+
   '';
 
   programs.zsh.promptInit = ''
@@ -55,7 +58,9 @@
     grh="git reset HEAD";
     glum="git pull upstream master";
     gwch="git whatchanged -p --abbrev-commit --pretty=medium";
+    gcurr="git rev-parse --abbrev-ref HEAD";
     
+    proxyHome="sshuttle -r ziggypop.mooo.com 0.0.0.0/0 -v";
 
   };
 

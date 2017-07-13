@@ -31,6 +31,7 @@
     tdesktop # telegram
     xarchive
     mplayer
+    mpv
 
     atom
 
@@ -50,6 +51,9 @@
     maim
     xorg.xev
     xorg.xprop
+    i3lock # The lock that is activated when the screen closes
+    i3lock-fancy
+    lightlocker
     xsel
     redshift
 

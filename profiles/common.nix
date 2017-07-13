@@ -17,6 +17,7 @@
     wget
     traceroute
     curl
+    sshuttle
     acpi
     usbutils
     git

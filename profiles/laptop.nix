@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
+    xss-lock # lock when the screen closes
   ];
 
 services.xserver = {
@@ -18,7 +19,12 @@ services.xserver = {
     synaptics.minSpeed = ".9";
     synaptics.maxSpeed = "1.4";
 
+    displayManager.lightdm.enable = true;
+
     displayManager.sessionCommands = ''
+
+    ${pkgs.xss-lock}/bin/xss-lock -- ${pkgs.i3lock-fancy}/bin/i3lock-fancy -t "" -g &
+
       ssh-add
 #      ${pkgs.networkmanagerapplet}/bin/nm-applet &;
       # Set GTK_PATH so that GTK+ can find the Xfce theme engine.
@@ -44,6 +50,8 @@ hardware.pulseaudio.package = pkgs.pulseaudioFull;
 hardware.pulseaudio.tcp.enable = true;
 hardware.pulseaudio.zeroconf.discovery.enable = true;
 hardware.pulseaudio.zeroconf.publish.enable = true;
+hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
+
 
 services.postgresql.enable = true;
 services.postgresql.authentication = "local all all ident";
