@@ -1,0 +1,83 @@
+# functions
+
+cs()        # cd + ls
+{
+    dir=$1
+    if [[ -z "$dir" ]]; then
+        dir=$HOME
+    fi
+    if [[ -d "$dir" ]]; then
+        cd "$dir"
+        ls -h --color=auto
+    else
+        echo "zsh: cs: '$dir': Directory not found"
+    fi
+}
+
+
+function extract()      # Handy Extract Program
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *.jar)       jar -xf $1      ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+
+# Create a ZIP archive of a file or folder.
+function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+
+# prints the Mandelbrot set to the terminal; zsh only
+function Mandelbrot {
+   local lines columns colour a b p q i pnew
+   ((columns=COLUMNS-1, lines=LINES-1, colour=0))
+   for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
+       for ((a=-2.0; a<=1; a+=3.0/columns)) do
+           for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < 32; i++)) do
+               ((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
+           done
+           ((colour=(i/4)%8))
+            echo -n "\\e[4${colour}m "
+        done
+        echo
+    done
+}
+
+
+function DateFile() {
+    _date=$(date +"%m_%d_%Y")
+    touch "$1_$_date.txt"
+
+}
+function play {
+     youtube-dl --default-search=ytsearch: \
+                --youtube-skip-dash-manifest \
+                --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" \
+                --restrict-filenames \
+                --format="bestaudio[ext!=webm]" \
+                --exec=mplayer -vvv "$*"
+}
+
+function setBacklightDell {
+    zmodload zsh/mathfunc
+    MAX_BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/max_brightness)
+    ((percent_brightness = $1 / 100.0 * $MAX_BRIGHTNESS))
+    rounded=$((int(rint($percent_brightness))))
+
+    echo $rounded | sudo tee /sys/class/backlight/intel_backlight/brightness
+}

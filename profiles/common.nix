@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+# This config file should contain packages and settings that should apply to all possible configurations.
+# If there is something that conflicts between environments, then in should be enumerated in those specific environments.
+
 
  # Select internationalisation properties.
   i18n = {
@@ -15,7 +18,6 @@
     traceroute
     curl
     acpi
-    docker
     usbutils
     git
     htop
@@ -26,8 +28,7 @@
     tree
     psmisc # killall
     python35Packages.youtube-dl
-    zsh-prezto
-
+    zsh-prezto # Consider moving this into the zsh nix file
 
     idea.idea-community
 
@@ -41,8 +42,8 @@
     gcc
     mono
     go
-    rustNightly.rustc
-    rustNightly.cargo
+  #  rustNightly.rustc
+  # rustNightly.cargo
     nodejs
     gnuplot
     (texlive.combine {
@@ -86,6 +87,8 @@
       fantasque-sans-mono
       ubuntu_font_family
       font-awesome-ttf
+      comic-neue
+      nerdfonts
     ];
   };
 
@@ -96,19 +99,30 @@
     extraGroups = [ "wheel" "networkmanager" "audio" "docker" "plex"];
     uid = 1000;
   };
+  # I believe that root needs to be in the audio group to make pulseaudio work for some applications.
   users.extraUsers.root = {
-    extraGroups = [ "audio" ];
+    extraGroups = [ "audio" "plex"];
   };
+
+# Set the sudo password timeout
+  security.sudo.extraConfig = ''
+Defaults        env_reset, timestamp_timeout=15
+  '';
+
+  # Keep the client from disconnecting by polling the server once a minute
+  programs.ssh.extraConfig = "ServerAliveInterval 60";
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+  programs.mosh.enable = true;
+  services.openssh.ports = [22];
+  services.openssh.forwardX11 = true;
+  programs.ssh.forwardX11 = true;
+  programs.ssh.setXAuthLocation = true;
 
 
   networking.networkmanager.enable = true;
 
-  programs.zsh.enable = true;
-  users.defaultUserShell = "/run/current-system/sw/bin/zsh";
-  #programs.zsh.shellInit = "";
- # programs.zsh.interactiveShellInit = "source /etc/nixos/dotfiles/zsh/zshrc";
-
-
-    
 }
+
 

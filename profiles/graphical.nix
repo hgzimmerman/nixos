@@ -22,6 +22,7 @@
     #User Programs
     evince
     firefox
+    vivaldi
     zsh
     terminator
     vlc
@@ -29,6 +30,7 @@
     gnome3.nautilus
     tdesktop # telegram
     xarchive
+    mplayer
 
     atom
 

@@ -8,8 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./custom.nix
       ./neovim.nix
+      ./zsh.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
       #./profiles/laptop.nix
@@ -30,6 +30,5 @@
  
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "17.03";
-
 
 }

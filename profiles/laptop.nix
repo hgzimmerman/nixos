@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 {
 
+  # Set your time zone.
+  #time.timeZone = "America/New_York";
+  time.timeZone = "America/Chicago";
+
+  networking.hostName = "NixosLaptop"; # Define your hostname.
+
   environment.systemPackages = with pkgs; [
     xorg.xbacklight
   ];
@@ -32,5 +38,16 @@ services.xserver = {
   };
 
 programs.light.enable = true;
+
+hardware.bluetooth.enable = true;
+hardware.pulseaudio.package = pkgs.pulseaudioFull;
+hardware.pulseaudio.tcp.enable = true;
+hardware.pulseaudio.zeroconf.discovery.enable = true;
+hardware.pulseaudio.zeroconf.publish.enable = true;
+
+services.postgresql.enable = true;
+services.postgresql.authentication = "local all all ident";
+
+
 
 }

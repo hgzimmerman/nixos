@@ -1,11 +1,17 @@
 { config, pkgs, ... }:
 {
 
+  # Set your time zone.
+  #time.timeZone = "America/New_York";
+  time.timeZone = "America/Chicago";
+
+  networking.hostName = "NixosDesktop"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [
     moc
     mumble
     steam
+    docker
     xorg.xf86videointel
     inkscape
   ];
@@ -38,8 +44,23 @@ services.xserver = {
     '';
 
 
-    videoDrivers = [ "mesa" ];
-#    videoDrivers = [ "nvidia" ];
+#    videoDrivers = [ "mesa" ];
+    videoDrivers = [ "nvidia" ];
   };
+
+  virtualisation.docker.enable = true;
+
+hardware.bluetooth.enable = true;
+hardware.pulseaudio.package = pkgs.pulseaudioFull;
+hardware.pulseaudio.tcp.enable = true;
+hardware.pulseaudio.zeroconf.discovery.enable = true;
+hardware.pulseaudio.zeroconf.publish.enable = true;
+hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
+
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.splix pkgs.hplip ];
+
 
 }
