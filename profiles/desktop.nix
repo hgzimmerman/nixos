@@ -26,7 +26,7 @@ services.xserver = {
     displayManager.sessionCommands = ''
     #  xrandr --output HDMI-1 --right-of DP-1
     #  xrandr --output DP-1 --rate 144 --mode 1920x1080 --primary
-      xrandr --output DP-4 --left-of DVI-D-0
+      xrandr --output DP-4 --right-of DVI-D-0
       xrandr --output DVI-D-0 --rate 144 --mode 1920x1080 --primary
       xset s 3600 3600
       xset -dpms
@@ -50,14 +50,15 @@ services.xserver = {
     videoDrivers = [ "nvidia" ];
   };
 
+  networking.firewall.allowedTCPPorts = [22 80 443 8080];
   virtualisation.docker.enable = true;
 
-hardware.bluetooth.enable = true;
-hardware.pulseaudio.package = pkgs.pulseaudioFull;
-hardware.pulseaudio.tcp.enable = true;
-hardware.pulseaudio.zeroconf.discovery.enable = true;
-hardware.pulseaudio.zeroconf.publish.enable = true;
-hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
+  hardware.bluetooth.enable = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  hardware.pulseaudio.tcp.enable = true;
+  hardware.pulseaudio.zeroconf.discovery.enable = true;
+  hardware.pulseaudio.zeroconf.publish.enable = true;
+  hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
 
 
   # Enable CUPS to print documents.

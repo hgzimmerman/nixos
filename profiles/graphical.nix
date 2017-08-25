@@ -55,6 +55,7 @@
     i3lock-fancy
     lightlocker
     xsel
+    xclip
     redshift
 
     #Misc xfce things

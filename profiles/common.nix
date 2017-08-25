@@ -4,6 +4,7 @@
 # If there is something that conflicts between environments, then in should be enumerated in those specific environments.
 
 
+
  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -11,6 +12,11 @@
     defaultLocale = "en_US.UTF-8";
   };
 
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    oraclejdk8 = pkgs.openjdk8;
+    rustNightly = pkgs.callPackage /etc/nixos/customPkgs/rust {};
+    rustLatest = rustNightly.rust {};
+  }; 
 
   environment.systemPackages = with pkgs; [
     nox
@@ -43,6 +49,9 @@
     gcc
     mono
     go
+
+    openssl
+
   #  rustNightly.rustc
   # rustNightly.cargo
     nodejs
@@ -75,8 +84,9 @@
     })
 
   ];
+  
 
-  nixpkgs.config.packageOverrides = pkgs: { oraclejdk8 = pkgs.openjdk8; }; 
+
   virtualisation.docker.enable = true;
 
 
@@ -125,5 +135,3 @@ Defaults        env_reset, timestamp_timeout=15
   networking.networkmanager.enable = true;
 
 }
-
-
