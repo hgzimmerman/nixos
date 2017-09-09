@@ -2,8 +2,8 @@
 {
 
   # Set your time zone.
-  #time.timeZone = "America/New_York";
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
+#  time.timeZone = "America/Chicago";
 
   networking.hostName = "NixosDesktop"; # Define your hostname.
 
