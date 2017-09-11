@@ -21,6 +21,16 @@
 
     PATH="$PATH:$HOME/.cargo/bin"
 
+    # NPM can't install to the default location in /nix/store because of its immutability,
+    # so create ~/.npm-packages/ and a ~/.npmrc file with "prefix=$HOME/.npm-packages" in it.
+    NPM_PACKAGES="$HOME/.npm-packages"
+    PATH="$NPM_PACKAGES/bin:$PATH"
+
+    PATH="$HOME/.bin"
+
+
+    export RUST_SRC_PATH="$HOME/rust_src/rust/src"
+
   '';
 
   programs.zsh.promptInit = ''
