@@ -43,6 +43,8 @@
     gcc
     mono
     go
+    pandoc
+
   #  rustNightly.rustc
   # rustNightly.cargo
     nodejs

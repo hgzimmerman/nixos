@@ -33,6 +33,7 @@
     mplayer
     mpv
 
+    vscode
     atom
 
     #Printer Drivers
@@ -40,6 +41,7 @@
 
     # Window manager
     rofi
+    rofi-menugen
     i3
     networkmanagerapplet
     lemonbar

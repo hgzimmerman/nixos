@@ -8,12 +8,14 @@ else
     GS=$@
 
 
-    if [ -z $(grep -q "$GS" "$HOME/.mpvhist") ]; then
+    if [ -z $(grep "$GS" "$HOME/.mpvhist") ]; then
         echo $GS >> ~/.mpvhist
     fi
 
     if [ -n "$GS" ]; then 
-        mpv --quiet $GS > /dev/null &
+        ID="$(echo $GS | sed -r 's/^.*[&?]v=(.{11})([&#].*)?$/\1/')"
+        link="ytdl://$ID"
+        mpv --quiet $link > /dev/null &
     fi
 fi
 
