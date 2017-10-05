@@ -58,6 +58,9 @@ hardware.pulseaudio.tcp.anonymousClients.allowAll = true;
 services.postgresql.enable = true;
 services.postgresql.authentication = "local all all ident";
 
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.splix pkgs.hplip ];
 
 
 }

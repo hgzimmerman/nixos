@@ -21,13 +21,14 @@
 
     #User Programs
     evince
-    firefox
+    firefox-beta-bin
     vivaldi
     zsh
     terminator
     vlc
     pavucontrol
     gnome3.nautilus
+    alacritty
     tdesktop # telegram
     xarchive
     mplayer

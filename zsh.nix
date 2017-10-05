@@ -26,7 +26,7 @@
     NPM_PACKAGES="$HOME/.npm-packages"
     PATH="$NPM_PACKAGES/bin:$PATH"
 
-    PATH="$HOME/.bin"
+    PATH="$HOME/.bin:$PATH"
 
 
     export RUST_SRC_PATH="$HOME/rust_src/rust/src"
