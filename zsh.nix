@@ -26,6 +26,8 @@
     NPM_PACKAGES="$HOME/.npm-packages"
     PATH="$NPM_PACKAGES/bin:$PATH"
 
+    # If I want to install stuff not available via the nixos pkg store, I install it to $HOME/.bin
+    PATH="$HOME/.bin/WebStorm/bin:$PATH"
 
 
     export RUST_SRC_PATH="$HOME/rust_src/rust/src"
