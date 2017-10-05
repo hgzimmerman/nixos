@@ -18,6 +18,8 @@
     rustLatest = rustNightly.rust {};
   }; 
 
+  nixpkgs.config.allowBroken = true; # Required if building using unstable channel
+
   environment.systemPackages = with pkgs; [
     nox
     wget
@@ -26,6 +28,7 @@
     sshuttle
     acpi
     usbutils
+    coreutils
     git
     htop
     zip
@@ -33,14 +36,19 @@
     unrar
     p7zip
     tree
+    tmux
     psmisc # killall
     python35Packages.youtube-dl
     zsh-prezto # Consider moving this into the zsh nix file
+    keybase
+    keybase-gui
+    kbfs
 
     idea.idea-community
 
     # Languages
     python3
+    python2
     ruby
     openjdk
     cmake
@@ -122,6 +130,10 @@ Defaults        env_reset, timestamp_timeout=15
 
   # Keep the client from disconnecting by polling the server once a minute
   programs.ssh.extraConfig = "ServerAliveInterval 60";
+
+  services.keybase.enable = true;
+  services.kbfs.enable = true;
+  services.kbfs.mountPoint = "/keybase";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
