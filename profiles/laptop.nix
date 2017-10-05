@@ -2,8 +2,8 @@
 {
 
   # Set your time zone.
-  #time.timeZone = "America/New_York";
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
+  #time.timeZone = "America/Chicago";
 
   networking.hostName = "NixosLaptop"; # Define your hostname.
 
@@ -21,12 +21,14 @@ services.xserver = {
 
     displayManager.lightdm.enable = true;
 
+
     displayManager.sessionCommands = ''
 
-    ${pkgs.xss-lock}/bin/xss-lock -- ${pkgs.i3lock-fancy}/bin/i3lock-fancy -t "" -g &
+    #set screen timeout lock to an hour.
+    ${pkgs.xorg.xset}/bin/xset s 3600
+    ${pkgs.xss-lock}/bin/xss-lock -- ${pkgs.i3lock-fancy}/bin/i3lock-fancy -t ""  &
 
       ssh-add
-#      ${pkgs.networkmanagerapplet}/bin/nm-applet &;
       # Set GTK_PATH so that GTK+ can find the Xfce theme engine.
       export GTK_PATH=${pkgs.xfce.gtk_xfce_engine}/lib/gtk-2.0
 

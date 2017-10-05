@@ -72,6 +72,7 @@
     gcurr="git rev-parse --abbrev-ref HEAD";
     
     proxyHome="sshuttle -r ziggypop.mooo.com 0.0.0.0/0 -v";
+    currDate="date +%Y-%m-%d";
 
   };
 

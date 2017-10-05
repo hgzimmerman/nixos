@@ -1,0 +1,30 @@
+#!/usr/bin/env rofi-menugen
+
+#begin main
+name="MPV"
+add_link 'Youtube'                                        'youtube' 'echo Armbar'
+add_link 'Twitch'                                         'twitch'
+add_link 'Music'                                          'music'
+#end main
+
+#begin youtube
+name="Youtube"
+prompt=""
+add_link 'echo $HOME' 'home'
+add_exec 'All done!' "echo Thanks for playing, come again sometime"
+#end youtube
+
+
+
+#begin twitch
+name="Twitch.tv"
+
+
+#end twitch
+
+
+#begin music
+name="YT music"
+
+
+#end music

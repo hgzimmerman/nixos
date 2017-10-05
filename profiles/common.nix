@@ -49,7 +49,7 @@
     gcc
     mono
     go
-
+    pandoc
     openssl
 
   #  rustNightly.rustc
