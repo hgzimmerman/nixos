@@ -56,6 +56,8 @@
 
           setlocal spell spelllang=en_us " Enable spell checking (<z=> on misspelled word)
 
+          set mouse=a
+
 
           " remap ; to :
           nnoremap ; :
