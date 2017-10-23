@@ -32,6 +32,8 @@
 
     export RUST_SRC_PATH="$HOME/rust_src/rust/src"
 
+    HISTFILE=~/.zsh_history
+
   '';
 
   programs.zsh.promptInit = ''
