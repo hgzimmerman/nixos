@@ -37,6 +37,7 @@
     p7zip
     tree
     tmux
+    screen
     psmisc # killall
     python35Packages.youtube-dl
     zsh-prezto # Consider moving this into the zsh nix file
