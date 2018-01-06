@@ -45,6 +45,8 @@
 
           " config=======================================================================
 
+          set guicursor= " fixes terminator
+          
           set number " toggle with <C-n>
 
           set autochdir " change the dir to the working initial file
@@ -110,6 +112,7 @@
             "latex-live-preview"
             "rainbow_parentheses"
             "vim-colorschemes"
+            "Supertab"
           #  "gruvbox"
             ]; }
         ];

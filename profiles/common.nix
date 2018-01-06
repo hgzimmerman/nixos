@@ -37,6 +37,7 @@
     p7zip
     tree
     tmux
+    screen
     psmisc # killall
     python35Packages.youtube-dl
     zsh-prezto # Consider moving this into the zsh nix file
@@ -59,35 +60,39 @@
     go
     pandoc
     openssl
+    rustup
+
+    nix-repl
 
   #  rustNightly.rustc
   # rustNightly.cargo
     nodejs
     gnuplot
     (texlive.combine {
+
       inherit (texlive)
         collection-basic
         metafont
         xits
         graphics
         amsmath
+#        collection-genericextra
         collection-bibtexextra
         collection-binextra
         collection-context
         collection-formatsextra
         collection-fontutils
-        collection-genericextra
-        collection-genericrecommended
+#        collection-genericrecommended
         collection-langcyrillic
         collection-langenglish
         collection-latex
         collection-latexextra
         collection-latexrecommended
-        collection-mathextra
+        collection-mathscience
         collection-pictures
-        collection-plainextra
-        collection-pstricks
-        collection-science
+#        collection-plainextra
+#        collection-pstricks
+#        collection-science
         collection-xetex;
     })
 
@@ -120,7 +125,7 @@
   };
   # I believe that root needs to be in the audio group to make pulseaudio work for some applications.
   users.extraUsers.root = {
-    extraGroups = [ "audio" "plex"];
+    extraGroups = [ "audio" "plex" "plugdev"];
   };
 
 # Set the sudo password timeout

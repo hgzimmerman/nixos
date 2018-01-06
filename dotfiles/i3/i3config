@@ -46,7 +46,7 @@ bindsym $mod+Shift+apostrophe kill
 #
 # 	Dmenu related stuff
 # bindsym $mod+e exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i  -fn FantasqueSansMono-Regular"
-bindsym $mod+e exec --no-startup-id rofi -show Drun
+bindsym $mod+e exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+e exec rofi -show search
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+Shift+Tab exec --no-startup-id rofi -show workspace
