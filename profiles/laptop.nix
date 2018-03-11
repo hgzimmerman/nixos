@@ -30,7 +30,6 @@ services.xserver = {
 
       ssh-add
       # Set GTK_PATH so that GTK+ can find the Xfce theme engine.
-      export GTK_PATH=${pkgs.xfce.gtk_xfce_engine}/lib/gtk-2.0
 
       # Set GTK_DATA_PREFIX so that GTK+ can find the Xfce themes.
       export GTK_DATA_PREFIX=${config.system.path}

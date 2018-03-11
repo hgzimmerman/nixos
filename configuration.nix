@@ -12,8 +12,8 @@
       ./zsh.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
-      #./profiles/laptop.nix
-      ./profiles/desktop.nix
+      ./profiles/laptop.nix
+      #./profiles/desktop.nix
       #./profiles/server.nix
       #./virtualization.nix
     ];

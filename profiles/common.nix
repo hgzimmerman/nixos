@@ -44,6 +44,8 @@
     keybase
     keybase-gui
     kbfs
+    ripgrep
+    fd
 
     idea.idea-community
 
