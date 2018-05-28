@@ -12,7 +12,7 @@
 
           " set up powerline
           let g:airline_powerline_fonts = 1
-          let g:airline_theme = 'tomorrow'
+          let g:airline_theme = 'gruvbox'
           " set up NERDTree
           nnoremap <C-t> :NERDTreeToggle <CR>
 
@@ -21,17 +21,33 @@
           let g:ctrlp_map = '<c-p>'
           let g:ctrlp_cmd = 'CtrlP'
 
+          if executable('rg')
+            set grepprg=rg\ --color=never
+            let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+            let g:ctrlp_use_caching = 0
+          endif
+          
+          " set up deoplete
+          let g:deoplete#enable_at_startup = 1
+
+          " deoplete rust/racer
+          let g:deoplete#sources#rust#racer_binary='/home/hzimmerman/.cargo/bin/racer'
+          let g:deoplete#sources#rust#rust_source_path='/home/hzimmerman/rust/src'
+
           " Theme
-          colorscheme spacegray
+          " colorscheme spacegray
+          colorscheme gruvbox
           set background=dark
-          let g:spacegray_underline_search = 1
-          let g:spacegray_italicize_comments = 1
+         let g:gruvbox_invert_indent_guides=1
+
+         " let g:spacegray_underline_search = 1
+         " let g:spacegray_italicize_comments = 1
 
 
           " set up font indentation markers
           let g:indent_guides_enable_on_vim_startup = 1
-          hi IndentGuidesOdd  ctermbg=black
-          hi IndentGuidesEven ctermbg=darkgrey
+          " hi IndentGuidesOdd  ctermbg=Black
+          " hi IndentGuidesEven ctermbg=DarkGrey
 
           " Hide highlights for spelling and underline them instead
           hi clear SpellBad
@@ -96,8 +112,8 @@
           '';
           vam.pluginDictionaries = [
             { names = [
-            "Spacegray-vim"
-            "youcompleteme"
+          #  "Spacegray-vim"
+          # "youcompleteme"
             "vim-addon-nix"
             "calendar-vim"  
             "The_NERD_tree" 
@@ -106,14 +122,17 @@
             "vim-gitgutter"
             "vim-indent-guides"
             "ctrlp-vim"
-            "neocomplete-vim"
+            #"neocomplete-vim"
+            #"deoplete"
+            "deoplete-rust"
+            "deoplete-nvim"
             "rust-vim"
-            "vim-racer"
+            #"vim-racer"
             "latex-live-preview"
             "rainbow_parentheses"
             "vim-colorschemes"
             "Supertab"
-          #  "gruvbox"
+            "gruvbox"
             ]; }
         ];
       };

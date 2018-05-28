@@ -63,7 +63,7 @@
 
     #Misc xfce things
     xfce.exo
-    xfce.gtk_xfce_engine
+#    xfce.gtk_xfce_engine
     xfce.gvfs
     xfce.terminal
     xfce.thunar

@@ -37,8 +37,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'nix' \
   'prompt' \
+  #'nix' \
 
 #
 # Autosuggestions
