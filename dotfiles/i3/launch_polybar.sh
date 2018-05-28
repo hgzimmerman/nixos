@@ -16,8 +16,8 @@ do
     elif [ "$line" = 'DP-1' ]; then
         polybar --config=/etc/nixos/dotfiles/i3/config DP-1 &
         echo "launched DP-1"
-    elif [ "$line" = 'HDMI-1' ]; then
-        polybar --config=/etc/nixos/dotfiles/i3/config HDMI-1 &
+    elif [ "$line" = 'HDMI-0' ]; then
+        polybar --config=/etc/nixos/dotfiles/i3/config HDMI-0 &
         echo "launched HDMI-1"
     elif [ "$line" = 'DP-4' ]; then
         polybar --config=/etc/nixos/dotfiles/i3/config DP-4 &

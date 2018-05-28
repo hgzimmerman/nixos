@@ -58,11 +58,11 @@ tray-scale = 1
 
 
 
-[bar/HDMI-1]
-monitor  = HDMI-1
+[bar/HDMI-0]
+monitor  = HDMI-0
 bottom   = true
 width    = 100%
-height   = 17
+height   = 25
 
 background = ${colors.transparent}
 foreground = ${colors.foreground}
