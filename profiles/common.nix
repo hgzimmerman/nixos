@@ -47,6 +47,7 @@
 
     idea.idea-community
 
+    binutils
     # Languages
     python3
     python2
