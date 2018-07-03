@@ -12,8 +12,8 @@
       ./zsh.nix
       ./profiles/common.nix
       ./profiles/graphical.nix
-      ./profiles/laptop.nix
-      #./profiles/desktop.nix
+      #./profiles/laptop.nix
+      ./profiles/desktop.nix
       #./profiles/server.nix
       #./virtualization.nix
     ];
@@ -29,6 +29,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
  
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "17.03";
+  system.nixos.stateVersion = "17.03";
 
 }
